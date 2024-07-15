@@ -14,4 +14,4 @@ git add .
 git commit -m "Update Helm chart repository with valheim chart"
 git push origin gh-pages --force
 
-gut checkout main
+git checkout main
