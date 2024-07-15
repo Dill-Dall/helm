@@ -9,20 +9,20 @@ replicaCount: 1
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   requests:
-    memory: 512Mi
-    cpu: 500m
+    memory: 6Gi
+    cpu: "3000m" 
 
 valheimServer:
-  serverName: Valheim Kubernetes Server
-  serverPort: 2456
-  worldName: Valheim World
-  serverPass: valheim-server
+  serverName: DillDalls Valheim Kubernetes Server
+  serverPort: 32456
+  worldName: DillDalls World
+  serverPass: password
   serverPublic: 1
   updateInterval: 10800 # every 3 hours
   backupsInterval: 43200 # every 12 hours
   backupsDirectory: /config/backups
   backupsMaxAge: 3 # 3 days
-  serviceType: LoadBalancer
+  serviceType: NodePort
   externalTrafficPolicy: Cluster
   updateCron: "*/15 * * * *"
   restartCron: "0 5 * * *"
@@ -31,6 +31,9 @@ valheimServer:
 persistence:
   config:
     enabled: true
-    size: 1Gi
-    # storageClassName: -
-  claimName: "" # provide a value to prevent PVC creation
+    size: 20Gi
+    storageClassName: local-path  # Specify the storage class name here
+    configPath: /mnt/ebs/valheim-server-config  # Human-readable path for hostPath
+  claimName: ""  # Ensure this matches the PVC name
+cronJobs:
+  updateCronOffset: "*/17 * * * *"  

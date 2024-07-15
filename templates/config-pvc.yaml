@@ -1,8 +1,32 @@
 {{- if eq .Values.persistence.claimName "" }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ template "valheim.fullname" . }}-pv
+  labels:
+    app: {{ template "valheim.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+spec:
+  capacity:
+    storage: {{ .Values.persistence.config.size | quote }}
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: {{ .Values.persistence.config.storageClassName | default "local-path" }}
+  hostPath:
+    path: /mnt/ebs/{{ template "valheim.fullname" . }}-config  # Define a readable directory name here
+---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: {{ template "valheim.fullname" . }}-config
+  namespace: {{ .Release.Namespace }}
   labels:
     app: {{ template "valheim.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -14,8 +38,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.config.size | quote }}
-
-{{- if .Values.persistence.config.storageClassName }}
-  storageClassName: {{ .Values.persistence.config.storageClassName }}
-{{- end }}
+  storageClassName: {{ .Values.persistence.config.storageClassName | default "local-path" }}
 {{- end }}
