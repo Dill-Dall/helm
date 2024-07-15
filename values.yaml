@@ -10,7 +10,7 @@ replicaCount: 1
 resources:
   requests:
     memory: 6Gi
-    cpu: "3000m" 
+    cpu: "2000m" 
 
 valheimServer:
   serverName: DillDalls Valheim Kubernetes Server
