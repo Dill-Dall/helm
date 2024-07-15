@@ -20,7 +20,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: {{ .Values.persistence.config.storageClassName | default "local-path" }}
   hostPath:
-    path: /mnt/ebs/{{ template "valheim.fullname" . }}-config  # Define a readable directory name here
+    path: {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config" }}  # Define a readable directory name here
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
