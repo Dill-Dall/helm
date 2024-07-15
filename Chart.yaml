@@ -1,11 +1,14 @@
 apiVersion: v1
 name: valheim
-version: 1.0.2
-appVersion: 0.142.6
-description: Valheim dedicated server.
+version: 0.0.1
+appVersion: 0.142.69
+description: Valheim dedicated server. Forked helm.
 keywords:
 - game
 - server
 home: https://www.valheimgame.com/
 sources:
 - https://github.com/lloesche/valheim-server-docker
+- https://github.com/grownseed/valheim-helm
+maintainers:
+  - name: https://github.com/Dill-Dall
