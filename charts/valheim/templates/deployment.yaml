@@ -7,7 +7,6 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-    helmDae: 16072024
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
