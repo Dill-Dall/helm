@@ -1,6 +1,6 @@
-# Valheim
+# Valheim 
 
-[Valheim](https://www.valheimgame.com/) is a viking-themed survival game.
+[Valheim](https://www.valheimgame.com/) is a viking-themed survival game. --
 
 ## Introduction
 
