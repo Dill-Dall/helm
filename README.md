@@ -84,3 +84,4 @@ helm upgrade --install valheim-server --set valheimServer.serverName="My Valheim
 ```
 
 This will setup the Valheim server within the `valheim-server` namespace, make it private and accessible through the node's IP and port (`32456`).
+...
