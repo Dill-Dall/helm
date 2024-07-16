@@ -30,8 +30,6 @@ jobs:
       - name: Debug - List files
         run: ls -R
 
-      - name: Debug - Show charts directory
-        run: ls -R charts
 
 
       - name: Run chart-releaser
