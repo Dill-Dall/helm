@@ -14,7 +14,7 @@ resources:
 
 valheimServer:
   serverName: DillDalls Valheim Kubernetes Server
-  serverPort: 32456
+  serverPort: 32456  # or 2456 if not NodepPrt
   worldName: DillDalls World
   serverPass: password
   serverPublic: 1
@@ -22,7 +22,7 @@ valheimServer:
   backupsInterval: 43200 # every 12 hours
   backupsDirectory: /config/backups
   backupsMaxAge: 3 # 3 days
-  serviceType: NodePort
+  serviceType: NodePort #  Or LoadBalancer
   externalTrafficPolicy: Cluster
   updateCron: "*/15 * * * *"
   restartCron: "0 5 * * *"
