@@ -1,44 +1,4 @@
 apiVersion: batch/v1
-kind: Job
-metadata:
-  name: sync-from-s3-job
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app: {{ include "valheim.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
-  annotations:
-    "helm.sh/hook": pre-install,post-upgrade
-    "helm.sh/hook-delete-policy": hook-succeeded
-spec:
-  template:
-    spec:
-      containers:
-      - name: aws-cli
-        image: amazon/aws-cli
-        command:
-          - sh
-          - -c
-          - |
-            aws s3 sync s3://valheim-690090428495/valheim-data {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config" }}
-        env:
-        - name: AWS_REGION
-          value: "eu-north-1"
-        volumeMounts:
-        - name: ebs-storage
-          mountPath: /mnt/ebs
-      restartPolicy: OnFailure
-      volumes:
-      - name: ebs-storage
-        hostPath:
-          path: {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config" }}
-          type: DirectoryOrCreate
-
-
----
-
-apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: sync-to-s3
@@ -59,9 +19,9 @@ spec:
             image: amazon/aws-cli
             command:
               - sh
-              - -c
+              - -c #aws s3 sync s3://valheim-690090428495/valheim-data/ /mnt/ebs/valheim-server-config/
               - |
-                aws s3 sync {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config" }} s3://valheim-690090428495/valheim-data
+                aws s3 sync {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config/" }} s3://valheim-690090428495/valheim-data/
             env:
             - name: AWS_REGION
               value: "eu-north-1"
@@ -72,5 +32,5 @@ spec:
           volumes:
           - name: ebs-storage
             hostPath:
-              path: {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config" }}
+              path: {{ .Values.persistence.config.configPath | default "/mnt/ebs/valheim-server-config/" }}
               type: DirectoryOrCreate
