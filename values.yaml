@@ -34,7 +34,6 @@ persistence:
     size: 20Gi
     storageClassName: local-path  # Specify the storage class name here
     configPath: /mnt/ebs/valheim-server-config/  # Human-readable path for hostPath
-    s3Path: yours3path
   claimName: ""  # Ensure this matches the PVC name
 cronJobs:
   updateCronOffset: "*/17 * * * *"  
