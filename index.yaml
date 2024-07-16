@@ -3,6 +3,24 @@ entries:
   valheim:
   - apiVersion: v1
     appVersion: 0.218.19
+    created: "2024-07-16T23:48:36.531328794Z"
+    description: Valheim dedicated server. Forked helm.
+    digest: 593a7508e628048c5dffae7d8b52de789fd9309af3267cc953fc8ffa9c1caf03
+    home: https://www.valheimgame.com/
+    keywords:
+    - game
+    - server
+    maintainers:
+    - name: https://github.com/Dill-Dall
+    name: valheim
+    sources:
+    - https://github.com/lloesche/valheim-server-docker
+    - https://github.com/grownseed/valheim-helm
+    urls:
+    - valheim-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v1
+    appVersion: 0.218.19
     created: "2024-07-16T22:23:04.348877447Z"
     description: Valheim dedicated server. Forked helm.
     digest: da361bfedcc9ccb96d0c927193fb0cf2a3f98882f3cb6da6ff011f6361714ffa
@@ -55,4 +73,4 @@ entries:
     urls:
     - valheim-0.0.5.tgz
     version: 0.0.5
-generated: "2024-07-16T22:23:04.348890201Z"
+generated: "2024-07-16T23:48:36.531348341Z"
