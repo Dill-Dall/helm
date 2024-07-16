@@ -1,7 +1,7 @@
 apiVersion: v1
 name: valheim
-version: 0.0.8
-appVersion: 0.142.69
+version: 0.0.9
+appVersion: 0.218.19
 description: Valheim dedicated server. Forked helm.
 keywords:
 - game
