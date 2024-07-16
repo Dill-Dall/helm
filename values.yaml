@@ -1,5 +1,5 @@
 # Valheim image version
-# ref: https://github.com/lloesche/valheim-server-docker
+# ref: https://github.com/lloesche/valheim-server-docker ..
 image: lloesche/valheim-server
 imageTag: latest
 
