@@ -1,6 +1,11 @@
 # Forked from https://github.com/grownseed/valheim-helm
 Source at: https://github.com/Dill-Dall/helm
 
+# Compatible with AWS infractructure found in 
+https://github.com/Dill-Dall/k3s-spotinstance-gameserver
+
+
+
 # Valheim
 
 [Valheim](https://www.valheimgame.com/) is a viking-themed survival game.
